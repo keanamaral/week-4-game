@@ -1,0 +1,145 @@
+/*Styling Sheet for Starwars Game*/
+body {
+  background: url(..//Images/background_starwars_01.jpg);
+}
+.wrapperPageContent{
+    margin-top: 10px;
+    margin-left: 20px;
+    height:780px;
+    width: 1800px;
+}
+.headercontainer{
+    height:85px;
+    background: rgb(2, 2, 24);
+    border: 5px solid grey;
+    text-align: center;
+}
+#headerTitle{
+    color: #ffffff;
+    margin-top: 15px;
+    font-size: 60px;
+    font-family: url(..//Images/STARWARS.ttf) format("truetype");
+}
+#gameInstructionContainer{
+    float: left;
+    position: relative;
+    box-sizing: border-box;
+    margin-left: 50px;
+    margin-top: 20px;
+    height:730px;
+    width: 500px;
+    background: rgb(45, 45, 168);
+    border: 5px solid pink;
+    font-size: 30px;
+    color: cornsilk;
+}
+.gameInstructionPara{
+    margin-top: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.Power{
+    margin-left: 30px;
+    margin-right: 30px;
+}
+#gameCharachtersBox{
+    box-sizing: border-box;
+    float: left;
+    position: relative;
+    margin-left: 50px;
+    margin-top: 20px;
+    height:230px;
+    width: 600px;
+    background: rgb(45, 45, 168);
+    border: 5px solid pink;
+    font-size: 30px;
+    color: cornsilk;    
+}
+.Charachter{
+    margin-left: 30px;
+}
+#yourCharachterBox{
+    box-sizing: border-box;
+    float: left;
+    position: relative;
+    margin-left: 50px;
+    margin-top: 20px;
+    height:230px;
+    width: 600px;
+    background: rgb(45, 45, 168);
+    border: 5px solid pink;
+    font-size: 30px;
+    color: cornsilk;
+}
+#allEnemiesBox{
+    box-sizing: border-box;
+    float: left;
+    position: relative;
+    margin-left: 50px;
+    margin-top: 20px;
+    height:230px;
+    width: 600px;
+    background: rgb(45, 45, 168);
+    border: 5px solid pink;
+    font-size: 30px;
+    color: cornsilk;    
+}
+#defenderBox{
+    box-sizing: border-box;
+    position: absolute;
+    margin-top: 270px;
+    right: 200px;
+    height:230px;
+    width: 400px;
+    background: rgb(45, 45, 168);
+    border: 5px solid pink;
+    font-size: 30px;
+    color: cornsilk;    
+}
+#winLossBox{
+    box-sizing: border-box;
+    position: absolute;
+    margin-top: 20px;
+    right: 200px;
+    height:230px;
+    width: 400px;
+    background:rgb(45, 45, 168);
+    border: 5px solid pink;
+    font-size: 30px;
+    color: cornsilk;    
+}
+#wins{
+    margin-left: 20px;
+    font-size: 40px;
+}
+#losses{
+    margin-left: 20px;
+    font-size: 40px;
+}
+#attack {
+    clear: both;
+    overflow: auto;
+    
+    position: absolute;
+    font-size: 30px;
+    background: rgb(2, 2, 24);
+    color: cornsilk;
+    border-style: solid;
+    top: 625px;
+    right: 300px;
+    height: 100px;
+    width: 200px;
+  }
+footer{
+    clear: both;
+    overflow: auto;
+    background: #666666;
+    color: cornsilk;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+    border-top: 5px solid grey;
+    left: 0;                            /*Puts Footer at page bottom*/
+    right: 0;
+    bottom: 0;
+}

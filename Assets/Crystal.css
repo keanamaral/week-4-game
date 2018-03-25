@@ -1,0 +1,122 @@
+/*Styling Sheet for Crystal Game*/
+body {
+  background: url(..//Images/background_Crystal.jpg);
+}
+.wrapperPageContent{
+    margin-top: 20px;
+    height:770px;
+    width: 1800px;
+}
+.headercontainer{
+    height:85px;
+    background:darkmagenta;
+    border: 5px solid pink;
+    text-align: center;
+}
+#headerTitle{
+    color: #ffffff;
+    margin-top: 15px;
+    font-size: 60px;
+}
+#gameInstructionContainer{
+    float: left;
+    position: relative;
+    box-sizing: border-box;
+    margin-left: 50px;
+    margin-top: 20px;
+    height:700px;
+    width: 600px;
+    background:darkmagenta;
+    border: 5px solid pink;
+    font-size: 30px;
+    color: cornsilk;
+}
+.gameInstructionPara{
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+#gameCrystalBox{
+    box-sizing: border-box;
+    float: left;
+    position: relative;
+    margin-left: 50px;
+    margin-top: 20px;
+    height:250px;
+    width: 600px;
+    background:darkmagenta;
+    border: 5px solid pink;
+    font-size: 30px;
+    color: cornsilk;    
+}
+.crystal{
+    margin-left: 30px;
+}
+#randomNumberBox{
+    box-sizing: border-box;
+    float: left;
+    position: relative;
+    margin-left: 50px;
+    margin-top: 20px;
+    height:205px;
+    width: 600px;
+    background:darkmagenta;
+    border: 5px solid pink;
+    font-size: 30px;
+    color: cornsilk;    
+}
+#randomNumber{
+    margin-left: 20px;
+    font-size: 50px;
+}
+#totalScoreBox{
+    box-sizing: border-box;
+    float: left;
+    position: relative;
+    margin-left: 50px;
+    margin-top: 20px;
+    height:205px;
+    width: 600px;
+    background:darkmagenta;
+    border: 5px solid pink;
+    font-size: 30px;
+    color: cornsilk;    
+}
+#totalScore{
+    margin-left: 20px;
+    font-size: 50px;
+}
+#winLossBox{
+    box-sizing: border-box;
+    float: left;
+    position: relative;
+    margin-top: 20px;
+    margin-left: 50px;
+    height:205px;
+    width: 400px;
+    background:darkmagenta;
+    border: 5px solid pink;
+    font-size: 30px;
+    color: cornsilk;    
+}
+#wins{
+    margin-left: 20px;
+    font-size: 40px;
+}
+#losses{
+    margin-left: 20px;
+    font-size: 40px;
+}
+footer{
+    clear: both;
+    overflow: auto;
+    background: #666666;
+    color: cornsilk;
+    padding: 20px;
+    font-size: 20px;
+    text-align: center;
+    border-top: 5px solid pink;
+    left: 0;                             /*Puts Footer at page bottom*/
+    right: 0;
+    bottom: 0;
+}

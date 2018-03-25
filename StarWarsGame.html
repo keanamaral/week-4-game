@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Starwars Game</title>
+  <link rel="stylesheet" type="text/css" href="Assets/Reset.css">
+  <link rel="stylesheet" type="text/css" href="Assets/Starwars.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ </head>
+ <body>
+  <Div Class="headercontainer">
+    <h1 id="headerTitle">Star Wars RPG!</h1>   <!--Title box at top of page-->  
+  </Div>
+
+  <Div class="wrapperPageContent">                      <!--Page wrapper for page boxes except header and footer-->
+    <Div id="gameInstructionContainer">                 <!--Instructions box-->  
+        <p class="gameInstructionPara">How to play this game:</p>
+        <br>
+        <p class="gameInstructionPara">Select 1 of the charachters as Your Charachter.  
+            Each charachter has a different starting Health Power.</p>
+        <br>
+        <p class="gameInstructionPara">The remaining charachters become Your Enemies.
+            Now select 1 Charachter from Your Enemies to become your first defender.</p>
+        <br>
+        <p class="gameInstructionPara">Press Attack button to reduce the Defender's Health Power.</p>
+        <br>
+        <p class="gameInstructionPara">Once your Defender is defeated, select another enemy
+            and as a Defender.  Attack. Do until All Your Enemies are defeated to Win!</p>
+        <br>
+    </Div>
+
+    <Div id="gameCharachtersBox">                             <!--Charachters box-->
+        <p class="gameInstructionPara">Click and select your charachter below:</p>
+        <br>
+        <a id="char"></a>
+        <br>
+        <span id="initialPower"></span>
+    </Div>
+
+    <Div id="yourCharachterBox">                             <!--Your charachter box-->
+        <p class="gameInstructionPara">Your Charachter:</p>
+        <br>
+        <a id="SelectedChar"></a>
+        <br>
+        <span id="selcharPower"></span>
+    </Div>
+    <Div id="allEnemiesBox">                             <!--All Enemies box-->
+        <p class="gameInstructionPara">All Your Enemies:</p>
+        <br>
+        <a id="Enemy"></a>
+        <br>
+        <span id="enemyPower"></span>
+    </Div>
+    <Div id="defenderBox">                             <!--Selected Defender box-->
+        <p class="gameInstructionPara">Defender:</p>
+        <br>
+        <a id="Defender"></a>
+        <br>
+        <span id="defenderPower"></span>
+    </Div>
+    <Div id="winLossBox">                             <!--Wins/Loss box-->
+        <p class="gameInstructionPara">Game Result</p><br>
+        <p class="gameInstructionPara"><span id="wins"></span> </p>
+        <p class="gameInstructionPara"><span id="losses"></span> </p>
+    </Div>
+    <button id="attack">attack</button>
+  </Div>
+  
+
+  <footer>
+        &copy; Copyright 2018 Kean Amaral
+  </footer>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    //=================================================================================================
+    //Section 1 Global Variables:
+    //=================================================================================================
+    
+    var charachter = $("#char");
+    var iniPower = $("#initialPower");
+    var charachterOptions = ["Luke Skywalker", "Obi-Wan", "DarthSidious", "DarthVader"];
+    var charachterRowof = ["1", "1", "1", "1"];             //Row 1 = initial, Row 2 = Your Charachter, Row 3 = All Your Enemies, Row 4 = Defender 
+    var charachterVisible = [true, true, true, true];
+    var charachterHealth = [120, 100, 150, 180];
+    var charachterAttack = [8, 5, 20, 25];
+    var charachterCounterAttack = [8, 5, 20, 25];
+    var charachterImgLocation = ["Images/starImage_LukeSkywalker.jpg","Images/starImage_obi-wan.jpg","Images/starImage_DarthSidious.jpg","Images/starImage_DarthVader.jpg"];
+    var counter = 0;
+
+    //Each charachter will have an array of values: 
+    //[0= which row charachter is on, 1= charachter visible, 3= charachter Health points, 
+    // 4= charachter attack power, 5= charachter counter attack power, 5=charachter name, 6=charachter image location];
+    //var charachteroptions = ["Luke Skywalker", "Obi-Wan", "DarthSidious", "DarthVader"];
+    //var charachterLuke = ["1", true, 120, 8, 8, "Luke Skywalker", "Images/starImage_LukeSkywalker.jpg"];
+    //var charachterObi = ["1", true, 100, 5, 5, "Obi-Wan", "Images/starImage_obi-wan.jpg"];
+    //var charachterDarthSidious = ["1", true, 150, 20, 20, "DarthSidious", "Images/starImage_DarthSidious.jpg"];
+    //var charachterDarthVader = ["1", true, 180, 25, 25, "DarthVader", "Images/starImage_DarthVader.jpg"];
+
+	// gameOver and gameBegun are boolean that shows whether the game is over or begun
+	var isGameOver = false;
+    var isGameBegun = false;
+    // playerName and defenderName record which character is playing which role
+    var playerName = "";
+    var defenderName = "";
+
+    // characterClicked holds which character is being clicked
+    var characterClicked = "";
+
+    // gamePausedForAnotherDefender is when waiting to pick another defender
+    var gamePausedForAnotherDefender = false;
+
+    //=================================================================================================
+    //Section 2 Functions:
+    //=================================================================================================
+
+    // console log function for debugging
+    function consoleLogVariables(){
+        console.log("charachterLuke Array: " + charachterLuke);
+        console.log("charachterObi Array: " + charachterObi);
+        console.log("charachterDarthSidious Array: " + charachterDarthSidious);
+        console.log("charachterDarthVader Array: " + charachterDarthVader);
+        console.log("isGameOver: " + isGameOver + " isGameBegun: " + isGameBegun);
+        console.log("playerName: " + playerName + " defenderName: " + defenderName);
+        console.log("gamePausedForAnotherDefender: " + gamePausedForAnotherDefender);
+        console.log("============================================")
+    };
+
+    function randomIntFromInterval(min,max){        //this function generates a random number between min and max values
+      return Math.floor(Math.random()*(max-min+1)+min);
+    };
+
+    function StartGame(){
+      //creating starting charachter images with all charachter attributes from charachter arrays
+      //and loading to DOM
+      $("#initialPower").attr("Class", "Power");
+
+      for (var i = 0; i < charachterOptions.length; i++) {
+        var imageCharachter = $("<img>");
+            imageCharachter.addClass("Charachter");
+            imageCharachter.attr("id", charachterOptions[i]);
+            imageCharachter.attr("Rowof", charachterRowof[i]);
+            imageCharachter.attr("Visible", charachterVisible[i]);
+            imageCharachter.attr("Health", charachterHealth[i]);
+            imageCharachter.attr("Attack", charachterAttack[i]);
+            imageCharachter.attr("CounterAttack", charachterCounterAttack[i]);
+            imageCharachter.attr("src", charachterImgLocation[i]);
+            imageCharachter.attr("height", "100px");
+            imageCharachter.attr("width", "100px");
+            imageCharachter.attr("title", charachterOptions[i]);
+            imageCharachter.attr("alt", charachterOptions[i]);
+            charachter.append(imageCharachter);
+
+        var initialHealth = $("<span>");
+            initialHealth.addClass("Power");
+            $("#initialPower").append(initialHealth);
+            $("#initialPower").append(charachterHealth[i]);
+      };    console.log(initialPower); console.log(char);
+    };
+
+    $(document).on("click", ".Charachter", function() {
+
+        counter++;  console.log(counter);
+//        $(this).attr("Rowof", charachterRowof[i]) = $(this).attr("Rowof", charachterRowof[i+1]);  console.log("Rowof Array: " + charachterRowof);
+        
+        var selectedCharachter = $("<img>");
+    });
+    //=================================================================================================
+    //Section 3 Main Game:
+    //=================================================================================================
+   
+    StartGame();
+
+  </script>
+
+ </body>
+</html>
